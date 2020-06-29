@@ -1,3 +1,2 @@
-import * as wasm from "dove-playground";
-
-wasm.greet();
+console.log("Hi Boss");
+console.log("Hey Boss");
