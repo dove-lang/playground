@@ -16,9 +16,11 @@
   },
   "license": "(MIT OR Apache-2.0)",
   "dependencies": {
-    "minimist": ">=0.2.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "dove-playground": "file:../pkg",
     "kind-of": ">=6.0.3",
-    "dove-playground": "file:../pkg"
+    "minimist": ">=0.2.1",
+    "source-map-loader": "^1.0.0"
   },
   "devDependencies": {
     "hello-wasm-pack": "^0.1.0",
