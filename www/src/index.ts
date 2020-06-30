@@ -14,10 +14,12 @@ async function load() {
     start(await import('hello-wasm-pack'));
 }
 
+let editorObj: monaco.editor.IStandaloneCodeEditor;
+
 load().then(() => {
     const editorContainer = document.getElementById("main-editor");
     if (editorContainer) {
-        monaco.editor.create(editorContainer, {
+        editorObj = monaco.editor.create(editorContainer, {
             value: "console.log(\"hey, boss\")",
             language: "javascript"
         })
@@ -40,4 +42,22 @@ function runBtnPressed() {
 
 function downloadBtnPressed() {
     console.log("download btn pressed.")
+
+    const value = editorObj.getValue();
+    download("dove-playground.dove", value);
+}
+
+//https://stackoverflow.com/questions/2897619/using-html5-javascript-to-generate-and-save-a-file
+function download(filename: string, text: string) {
+    const pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+
+    if (document.createEvent) {
+        const event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    } else {
+        pom.click();
+    }
 }
