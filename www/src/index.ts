@@ -47,7 +47,13 @@ function downloadBtnPressed() {
     download("dove-playground.dove", value);
 }
 
-//https://stackoverflow.com/questions/2897619/using-html5-javascript-to-generate-and-save-a-file
+/**
+ * Download string with `filename`.
+ * https://stackoverflow.com/questions/2897619/using-html5-javascript-to-generate-and-save-a-file
+ *
+ * @param filename - string the defines the filename
+ * @param text - string that defines the content of the downloaded file
+ */
 function download(filename: string, text: string) {
     const pom = document.createElement('a');
     pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
