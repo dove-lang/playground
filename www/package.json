@@ -19,6 +19,7 @@
     "dove-playground": "file:../pkg",
     "kind-of": ">=6.0.3",
     "minimist": ">=0.2.1",
+    "monaco-editor": "^0.20.0",
     "source-map-loader": "^1.0.0"
   },
   "devDependencies": {
@@ -28,6 +29,10 @@
     "typescript": "^3.9.5",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.5",
+    "monaco-editor-webpack-plugin": "^1.9.0",
+    "css-loader": "^3.6.0",
+    "style-loader": "^1.2.1",
+    "file-loader": "^6.0.0"
   }
 }
