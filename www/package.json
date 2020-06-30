@@ -16,7 +16,6 @@
   },
   "license": "(MIT OR Apache-2.0)",
   "dependencies": {
-    "awesome-typescript-loader": "^5.2.1",
     "dove-playground": "file:../pkg",
     "kind-of": ">=6.0.3",
     "minimist": ">=0.2.1",
@@ -25,6 +24,7 @@
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.0",
     "hello-wasm-pack": "^0.1.0",
+    "ts-loader": "^7.0.5",
     "typescript": "^3.9.5",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.1.0",
