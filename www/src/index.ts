@@ -4,7 +4,7 @@ function start(wasm: typeof import('hello-wasm-pack')) {
     console.log("All modules loaded");
 
     console.log("Hi Boss");
-    console.log("Hey Boss");
+    console.log("Hey Boss test");
 
     wasm.greet();
 
