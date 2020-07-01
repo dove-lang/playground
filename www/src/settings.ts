@@ -9,6 +9,10 @@ for name in ("foo", "bar") {
     print "Hello World! " + name
 }
 `;
+
+    export const INITIAL_OUTPUT_VAL =
+`"Hello World! foo"
+"Hello World! bar"`
 }
 
 export namespace General {

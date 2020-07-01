@@ -18,16 +18,27 @@ async function load() {
 }
 
 let editorObj: monaco.editor.IStandaloneCodeEditor;
+let outputObj: monaco.editor.IStandaloneCodeEditor;
 
 load().then(() => {
-    // Setup language
+    // Setup language.
     setupLanguage();
 
+    // Setup editor div.
     const editorContainer = document.getElementById("main-editor");
     if (editorContainer) {
         editorObj = monaco.editor.create(editorContainer, {
             value: Editor.INITIAL_EDITOR_VAL,
             language: Editor.LANG_ID
+        })
+    }
+
+    // Setup output div.
+    const outputContainer = document.getElementById("run-output");
+    if (outputContainer) {
+        outputObj = monaco.editor.create(outputContainer, {
+            readOnly: true,
+            value: Editor.INITIAL_OUTPUT_VAL
         })
     }
 
@@ -39,10 +50,6 @@ load().then(() => {
         runBtn.addEventListener("click", runBtnPressed);
         downloadBtn.addEventListener("click", downloadBtnPressed);
     }
-
-    const resultContainer = document.getElementById("run-results");
-    if(resultContainer){
-    }
 });
 
 // Helpers.
@@ -53,12 +60,10 @@ function setupLanguage() {
 }
 
 function runBtnPressed() {
-    console.log("run btn pressed.")
+    outputObj.setValue("test");
 }
 
 function downloadBtnPressed() {
-    console.log("download btn pressed.")
-
     const value = editorObj.getValue();
     download(General.DEFAULT_DL_FILENAME, value);
 }
