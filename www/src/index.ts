@@ -1,5 +1,7 @@
 import * as monaco from 'monaco-editor';
 
+import {monarchLanguage} from "./dove-monarch";
+
 // Fix "WebAssembly is included in initial chunk" issue
 // https://github.com/rustwasm/rust-webpack-template/issues/43#issuecomment-426597176
 // noinspection JSUnusedLocalSymbols
@@ -17,11 +19,20 @@ async function load() {
 let editorObj: monaco.editor.IStandaloneCodeEditor;
 
 load().then(() => {
+    // Setup language:
+    // - syntax highlighting,
+    // - TODO: code folding, use `richLanguageConfiguration`
+    setupLanguage();
+
     const editorContainer = document.getElementById("main-editor");
     if (editorContainer) {
         editorObj = monaco.editor.create(editorContainer, {
-            value: "console.log(\"hey, boss\")",
-            language: "javascript"
+            value:
+`for name in ("foo", "bar") {
+    print "Hello World! " + name
+}
+`,
+            language: "dove"
         })
     }
 
@@ -36,6 +47,11 @@ load().then(() => {
 });
 
 // Helpers.
+function setupLanguage() {
+    monaco.languages.register({ id: "dove" });
+    monaco.languages.setMonarchTokensProvider("dove", monarchLanguage);
+}
+
 function runBtnPressed() {
     console.log("run btn pressed.")
 }
