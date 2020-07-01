@@ -51,3 +51,43 @@ export const monarchLanguage = <monaco.languages.IMonarchLanguage>{
         ]
     },
 }
+
+export const advancedLanguageConfig = <monaco.languages.LanguageConfiguration> {
+    autoClosingPairs: [
+        {
+            close: "}",
+            notIn: [],
+            open: "{"
+        },
+        {
+            close: "]",
+            notIn: [],
+            open: "["
+        },
+        {
+            close: ")",
+            notIn: [],
+            open: "("
+        },
+        {
+            close: "\"",
+            notIn: [],
+            open: "\""
+        },
+        {
+            close: "*/",
+            notIn: [],
+            open: "/*"
+        }
+    ],
+    brackets: [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["/*", "*/"]
+    ],
+    comments: {
+        blockComment: ["/*", "*/"],
+        lineComment: "//"
+    }
+}

@@ -1,6 +1,6 @@
 import * as monaco from 'monaco-editor';
 
-import {monarchLanguage} from "./dove-monarch";
+import {monarchLanguage, advancedLanguageConfig} from "./dove-config";
 import {Editor, General} from "./settings";
 
 // Fix "WebAssembly is included in initial chunk" issue
@@ -47,6 +47,7 @@ load().then(() => {
 function setupLanguage() {
     monaco.languages.register({ id: Editor.LANG_ID });
     monaco.languages.setMonarchTokensProvider(Editor.LANG_ID, monarchLanguage);
+    monaco.languages.setLanguageConfiguration(Editor.LANG_ID, advancedLanguageConfig);
 }
 
 function runBtnPressed() {
