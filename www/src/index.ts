@@ -19,6 +19,7 @@ async function load() {
 
 let editorObj: monaco.editor.IStandaloneCodeEditor;
 let outputObj: monaco.editor.IStandaloneCodeEditor;
+let currentTheme: "vs" | "vs-dark" = "vs";
 
 load().then(() => {
     // Setup language.
@@ -49,10 +50,12 @@ load().then(() => {
     // Add event listeners for navbar items.
     const runBtn = document.getElementById("run-btn");
     const downloadBtn = document.getElementById("download-btn");
+    const changeTheme = document.getElementById("changeTheme");
 
-    if (runBtn != null && downloadBtn != null) {
+    if (runBtn != null && downloadBtn != null && changeTheme != null) {
         runBtn.addEventListener("click", runBtnPressed);
         downloadBtn.addEventListener("click", downloadBtnPressed);
+        changeTheme.addEventListener("click", changeThemePressed);
     }
 });
 
@@ -92,4 +95,22 @@ function download(filename: string, text: string) {
     } else {
         pom.click();
     }
+}
+
+function changeThemePressed() {
+    if (currentTheme == "vs") {
+        monaco.editor.setTheme("vs-dark");
+        currentTheme = "vs-dark";
+        document.getElementById("nav")!.style.backgroundColor = "#242424";
+        document.body.style.backgroundColor = "#1a1a1a";
+        document.getElementById("dove-brand")!.style.color = "#DDDDDD";
+        document.getElementById("changeTheme")!.innerText = "Light Theme";
+    } else {
+        monaco.editor.setTheme("vs");
+        currentTheme = "vs";
+        document.getElementById("nav")!.style.backgroundColor = "#f2f2f2";
+        document.body.style.backgroundColor = "white";
+        document.getElementById("dove-brand")!.style.color = "black";
+        document.getElementById("changeTheme")!.innerText = "Dark Theme";
+    }   
 }
