@@ -38,6 +38,10 @@ load().then(() => {
     if (outputContainer) {
         outputObj = monaco.editor.create(outputContainer, {
             readOnly: true,
+            selectionHighlight: false,
+            occurrencesHighlight: false,
+            renderLineHighlight: "none",
+            minimap: { enabled: false },
             value: Editor.INITIAL_OUTPUT_VAL
         })
     }
@@ -61,6 +65,7 @@ function setupLanguage() {
 
 function runBtnPressed() {
     outputObj.setValue("test");
+    console.log(editorObj.getRawOptions());
 }
 
 function downloadBtnPressed() {
