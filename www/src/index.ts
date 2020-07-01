@@ -39,6 +39,10 @@ load().then(() => {
         runBtn.addEventListener("click", runBtnPressed);
         downloadBtn.addEventListener("click", downloadBtnPressed);
     }
+
+    const resultContainer = document.getElementById("run-results");
+    if(resultContainer){
+    }
 });
 
 // Helpers.

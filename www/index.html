@@ -12,12 +12,23 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+    
     <style>
       #main-editor {
         display: block;
-        width: 50vw;
+        width: 55vw;
         height: 88vh;
         margin-top: 10px;
+      }
+    </style>
+
+    <style>
+      #run-results {
+        display: block;
+        width: auto;
+        height: 88vh;
+        margin-top: 10px;
+        margin-left: 80px;
       }
     </style>
   </head>
@@ -43,8 +54,19 @@
       </div>
 
     </nav>
+    
+  
+    <div class = "row">
+      <div class="col">
+        <div id="main-editor"></div>
+      </div>
+      <div class="col">
+          <div id= "run-results"></div>
+      </div>
+    </div>
 
-    <div id="main-editor"></div>
+
+
 
     <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
     <script src="./bootstrap.js"></script>
