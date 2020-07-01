@@ -36,8 +36,9 @@ export const monarchLanguage = <monaco.languages.IMonarchLanguage>{
             [/"/,  { token: 'string.quote', bracket: '@open', next: '@string' } ],
         ],
         whitespace: [
-            [/[ \t\r\n]+/, ''],
-            [/\/\/.*$/, 'comment'],
+            [/[ \t\r\n]+/, 'white'],
+            [/\/\*/,       'comment', '@comment' ],
+            [/\/\/.*$/,    'comment'],
         ],
         string: [
             [/[^\\"]+/, 'string'],
@@ -47,6 +48,8 @@ export const monarchLanguage = <monaco.languages.IMonarchLanguage>{
         ],
         comment: [
             [/[^\/*]+/, 'comment' ],
+            [/\/\*/,    'comment', '@push' ],    // nested comment
+            ["\\*/",    'comment', '@pop'  ],
             [/[\/*]/,   'comment' ]
         ]
     },
