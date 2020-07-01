@@ -1,6 +1,7 @@
 import * as monaco from 'monaco-editor';
 
-import {monarchLanguage} from "./dove-monarch";
+import {monarchLanguage, advancedLanguageConfig} from "./dove-config";
+import {Editor, General} from "./settings";
 
 // Fix "WebAssembly is included in initial chunk" issue
 // https://github.com/rustwasm/rust-webpack-template/issues/43#issuecomment-426597176
@@ -27,12 +28,8 @@ load().then(() => {
     const editorContainer = document.getElementById("main-editor");
     if (editorContainer) {
         editorObj = monaco.editor.create(editorContainer, {
-            value:
-`for name in ("foo", "bar") {
-    print "Hello World! " + name
-}
-`,
-            language: "dove"
+            value: Editor.INITIAL_EDITOR_VAL,
+            language: Editor.LANG_ID
         })
     }
 
@@ -48,8 +45,9 @@ load().then(() => {
 
 // Helpers.
 function setupLanguage() {
-    monaco.languages.register({ id: "dove" });
-    monaco.languages.setMonarchTokensProvider("dove", monarchLanguage);
+    monaco.languages.register({ id: Editor.LANG_ID });
+    monaco.languages.setMonarchTokensProvider(Editor.LANG_ID, monarchLanguage);
+    monaco.languages.setLanguageConfiguration(Editor.LANG_ID, advancedLanguageConfig);
 }
 
 function runBtnPressed() {
@@ -60,7 +58,7 @@ function downloadBtnPressed() {
     console.log("download btn pressed.")
 
     const value = editorObj.getValue();
-    download("dove-playground.dove", value);
+    download(General.DEFAULT_DL_FILENAME, value);
 }
 
 /**
