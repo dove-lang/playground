@@ -20,9 +20,7 @@ async function load() {
 let editorObj: monaco.editor.IStandaloneCodeEditor;
 
 load().then(() => {
-    // Setup language:
-    // - syntax highlighting,
-    // - TODO: code folding, use `richLanguageConfiguration`
+    // Setup language
     setupLanguage();
 
     const editorContainer = document.getElementById("main-editor");
