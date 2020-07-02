@@ -1,6 +1,6 @@
 import * as monaco from "monaco-editor";
 
-export const monarchLanguage = <monaco.languages.IMonarchLanguage>{
+export const doveMonarchLanguage = <monaco.languages.IMonarchLanguage> {
     // Set defaultToken to invalid to see what you do not tokenize yet
     defaultToken: 'invalid',
     keywords: [
@@ -55,7 +55,7 @@ export const monarchLanguage = <monaco.languages.IMonarchLanguage>{
     },
 }
 
-export const advancedLanguageConfig = <monaco.languages.LanguageConfiguration> {
+export const doveAdvancedLanguageConfig = <monaco.languages.LanguageConfiguration> {
     autoClosingPairs: [
         {
             close: "}",

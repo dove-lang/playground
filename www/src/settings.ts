@@ -1,6 +1,4 @@
 export namespace Editor {
-    export const LANG_ID = "dove";
-
     export const INITIAL_EDITOR_VAL =
 `// Dove 0.1.2 (default)
 // Visit https://github.com/dove-lang for more information.
@@ -11,7 +9,10 @@ for name in ("foo", "bar") {
 `;
 
     export const INITIAL_OUTPUT_VAL =
-`"Hello World! foo"
+`[warning] This is a warning.
+[error] This is an error.
+[line 1] This is an error with a line number.
+"Hello World! foo"
 "Hello World! bar"`
 }
 

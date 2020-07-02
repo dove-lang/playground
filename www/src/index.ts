@@ -1,7 +1,10 @@
 import * as monaco from "monaco-editor";
 
-import {monarchLanguage, advancedLanguageConfig} from "./dove-config";
+import {doveMonarchLanguage, doveAdvancedLanguageConfig} from "./dove-config";
+import {doveOutputMonarchLanguage} from "./dove-output-config";
 import {Editor, General} from "./settings";
+import {editor} from "monaco-editor";
+import IStandaloneThemeData = editor.IStandaloneThemeData;
 
 // Fix "WebAssembly is included in initial chunk" issue
 // https://github.com/rustwasm/rust-webpack-template/issues/43#issuecomment-426597176
@@ -19,10 +22,11 @@ async function load() {
 
 let editorObj: monaco.editor.IStandaloneCodeEditor;
 let outputObj: monaco.editor.IStandaloneCodeEditor;
-let currentTheme: "vs" | "vs-dark" = "vs";
+let currentTheme: "vs-dove" | "vs-dark-dove" = "vs-dove";
 
 load().then(() => {
     // Setup language.
+    setupThemes();
     setupLanguage();
 
     // Setup editor div.
@@ -30,7 +34,8 @@ load().then(() => {
     if (editorContainer) {
         editorObj = monaco.editor.create(editorContainer, {
             value: Editor.INITIAL_EDITOR_VAL,
-            language: Editor.LANG_ID
+            language: "dove",
+            theme: "vs-dove"
         })
     }
 
@@ -43,7 +48,9 @@ load().then(() => {
             occurrencesHighlight: false,
             renderLineHighlight: "none",
             minimap: { enabled: false },
-            value: Editor.INITIAL_OUTPUT_VAL
+            value: Editor.INITIAL_OUTPUT_VAL,
+            language: "dove-out",
+            theme: "vs-dove"
         })
     }
 
@@ -61,9 +68,29 @@ load().then(() => {
 
 // Helpers.
 function setupLanguage() {
-    monaco.languages.register({ id: Editor.LANG_ID });
-    monaco.languages.setMonarchTokensProvider(Editor.LANG_ID, monarchLanguage);
-    monaco.languages.setLanguageConfiguration(Editor.LANG_ID, advancedLanguageConfig);
+    // Setup Dove language.
+    monaco.languages.register({ id: "dove" });
+    monaco.languages.setMonarchTokensProvider("dove", doveMonarchLanguage);
+    monaco.languages.setLanguageConfiguration("dove", doveAdvancedLanguageConfig);
+    
+    // Setup Dove output language.
+    monaco.languages.register({ id: "dove-out" });
+    monaco.languages.setMonarchTokensProvider("dove-out", doveOutputMonarchLanguage);
+}
+
+function setupThemes() {
+    const themeBaseData = {
+        colors: {},
+        inherit: true,
+        rules: [
+            { token: 'dove-error', foreground: 'ff0000' },
+            { token: 'dove-warning', foreground: 'FFA500' }
+        ]
+    };
+    let defaultData = { base: "vs" };
+    let darkData = { base: "vs-dark" };
+    monaco.editor.defineTheme("vs-dove", Object.assign(defaultData, themeBaseData) as IStandaloneThemeData);
+    monaco.editor.defineTheme("vs-dark-dove", Object.assign(darkData, themeBaseData) as IStandaloneThemeData);
 }
 
 function runBtnPressed() {
@@ -98,16 +125,16 @@ function download(filename: string, text: string) {
 }
 
 function changeThemePressed() {
-    if (currentTheme == "vs") {
-        monaco.editor.setTheme("vs-dark");
-        currentTheme = "vs-dark";
+    if (currentTheme == "vs-dove") {
+        monaco.editor.setTheme("vs-dark-dove");
+        currentTheme = "vs-dark-dove";
         document.getElementById("nav")!.style.backgroundColor = "#242424";
         document.body.style.backgroundColor = "#1a1a1a";
         document.getElementById("dove-brand")!.style.color = "#DDDDDD";
         document.getElementById("changeTheme")!.innerText = "Light Theme";
     } else {
-        monaco.editor.setTheme("vs");
-        currentTheme = "vs";
+        monaco.editor.setTheme("vs-dove");
+        currentTheme = "vs-dove";
         document.getElementById("nav")!.style.backgroundColor = "#f2f2f2";
         document.body.style.backgroundColor = "white";
         document.getElementById("dove-brand")!.style.color = "black";
