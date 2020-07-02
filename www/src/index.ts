@@ -1,4 +1,4 @@
-import * as monaco from 'monaco-editor';
+import * as monaco from "monaco-editor";
 
 import {monarchLanguage, advancedLanguageConfig} from "./dove-config";
 import {Editor, General} from "./settings";
@@ -6,7 +6,7 @@ import {Editor, General} from "./settings";
 // Fix "WebAssembly is included in initial chunk" issue
 // https://github.com/rustwasm/rust-webpack-template/issues/43#issuecomment-426597176
 // noinspection JSUnusedLocalSymbols
-function start(wasm: typeof import('hello-wasm-pack')) {
+function start(wasm: typeof import("hello-wasm-pack")) {
     console.log("All modules loaded");
     // wasm.greet();
 
@@ -14,7 +14,7 @@ function start(wasm: typeof import('hello-wasm-pack')) {
 }
 
 async function load() {
-    start(await import('hello-wasm-pack'));
+    start(await import("hello-wasm-pack"));
 }
 
 let editorObj: monaco.editor.IStandaloneCodeEditor;
@@ -84,13 +84,13 @@ function downloadBtnPressed() {
  * @param text - string that defines the content of the downloaded file
  */
 function download(filename: string, text: string) {
-    const pom = document.createElement('a');
-    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    pom.setAttribute('download', filename);
+    const pom = document.createElement("a");
+    pom.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+    pom.setAttribute("download", filename);
 
     if (document.createEvent) {
-        const event = document.createEvent('MouseEvents');
-        event.initEvent('click', true, true);
+        const event = document.createEvent("MouseEvents");
+        event.initEvent("click", true, true);
         pom.dispatchEvent(event);
     } else {
         pom.click();
