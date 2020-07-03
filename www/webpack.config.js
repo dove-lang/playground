@@ -35,6 +35,10 @@ module.exports = {
       {
         test: /\.ttf$/,
         use: ['file-loader']
+      },
+      {
+        test: /\.wasm$/,
+        type: "webassembly/experimental"
       }
    ],
   },

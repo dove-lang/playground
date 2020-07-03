@@ -8,17 +8,16 @@ import IStandaloneThemeData = editor.IStandaloneThemeData;
 
 // Fix "WebAssembly is included in initial chunk" issue
 // https://github.com/rustwasm/rust-webpack-template/issues/43#issuecomment-426597176
-// noinspection JSUnusedLocalSymbols
-function start(wasm: typeof import("hello-wasm-pack")) {
+function start(wasm_in: typeof import("../../pkg/dove_wasm")) {
     console.log("All modules loaded");
-    // wasm.greet();
-
-    // TODO: application code here (after wasm loads)
+    wasm = wasm_in;
 }
 
 async function load() {
-    start(await import("hello-wasm-pack"));
+    start(await import("../../pkg/dove_wasm"));
 }
+
+let wasm: typeof import("../../pkg/dove_wasm");
 
 let editorObj: monaco.editor.IStandaloneCodeEditor;
 let outputObj: monaco.editor.IStandaloneCodeEditor;
@@ -94,8 +93,10 @@ function setupThemes() {
 }
 
 function runBtnPressed() {
-    outputObj.setValue("test");
-    console.log(editorObj.getRawOptions());
+    const inputValue = editorObj.getValue();
+    const resValue = wasm.run(inputValue).join("\n");
+
+    outputObj.setValue(resValue);
 }
 
 function downloadBtnPressed() {

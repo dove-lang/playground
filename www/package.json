@@ -16,7 +16,6 @@
   },
   "license": "(MIT OR Apache-2.0)",
   "dependencies": {
-    "dove-playground": "file:../pkg",
     "kind-of": ">=6.0.3",
     "minimist": ">=0.2.1",
     "monaco-editor": "^0.20.0",
@@ -24,7 +23,6 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.0",
-    "hello-wasm-pack": "^0.1.0",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5",
     "webpack": "^4.29.3",
