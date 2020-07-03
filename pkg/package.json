@@ -1,0 +1,15 @@
+{
+  "name": "dove-wasm",
+  "collaborators": [
+    "Peter Ke <peterke0911@gmail.com>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "dove_wasm_bg.wasm",
+    "dove_wasm.js",
+    "dove_wasm.d.ts"
+  ],
+  "module": "dove_wasm.js",
+  "types": "dove_wasm.d.ts",
+  "sideEffects": false
+}
