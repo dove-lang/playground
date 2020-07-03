@@ -9,10 +9,7 @@ for name in ("foo", "bar") {
 `;
 
     export const INITIAL_OUTPUT_VAL =
-`[warning] This is a warning.
-[error] This is an error.
-[line 1] This is an error with a line number.
-"Hello World! foo"
+`"Hello World! foo"
 "Hello World! bar"`
 }
 
