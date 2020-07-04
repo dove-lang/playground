@@ -7,12 +7,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <!-- Bootstrap js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-    
     <style>
       body {
         overflow: hidden;
@@ -36,13 +31,12 @@
   </head>
 
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="nav" style="background-color:#f2f2f2">
-      <!-- Dove emoji hex: 1F54A -->
       <a class="navbar-brand mb-0 h1" id="dove-brand">Dove Playground &#x1F54A</a>
-
       <a href="#" class="nav-link text-secondary mr-auto" id="run-btn">Run &#x1F3C3</a>
-
-      <a href="#" class="nav-link text-secondary" id="download-btn">Download &#x1F4C4</a>
+      <a href="#" class="nav-link text-secondary" id="upload-btn" data-toggle="modal" data-target="#input">Upload &#x1F4E4</a>
+      <a href="#" class="nav-link text-secondary" id="download-btn">Download &#x1F4E5</a>
 
       <div class="drop_down">
         <a class="nav-link dropdown-toggle text-secondary" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -56,9 +50,30 @@
       </div>
 
     </nav>
-    
-  
+
+    <!-- Body -->
     <div class = "row">
+      <!-- Input dialog modal -->
+      <div class="modal fade" tabindex="-1" role="dialog" id="input">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Upload</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Choose a file to upload.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="submit-modal-btn">Submit</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="col">
         <div id="main-editor"></div>
       </div>
@@ -69,7 +84,16 @@
     </div>
 
 
-
+    <!-- Bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
 
     <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
     <script src="./bootstrap.js"></script>
