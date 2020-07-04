@@ -54,15 +54,10 @@ load().then(() => {
     }
 
     // Add event listeners for navbar items.
-    const runBtn = document.getElementById("run-btn");
-    const downloadBtn = document.getElementById("download-btn");
-    const changeTheme = document.getElementById("changeTheme");
-
-    if (runBtn != null && downloadBtn != null && changeTheme != null) {
-        runBtn.addEventListener("click", runBtnPressed);
-        downloadBtn.addEventListener("click", downloadBtnPressed);
-        changeTheme.addEventListener("click", changeThemePressed);
-    }
+    document.getElementById("run-btn")?.addEventListener("click", runBtnPressed);
+    document.getElementById("download-btn")?.addEventListener("click", downloadBtnPressed);
+    document.getElementById("change-theme-btn")?.addEventListener("click", changeThemeBtnPressed);
+    document.getElementById("submit-modal-btn")?.addEventListener("click", submitFileBtnPressed);
 });
 
 // Helpers.
@@ -125,7 +120,7 @@ function download(filename: string, text: string) {
     }
 }
 
-function changeThemePressed() {
+function changeThemeBtnPressed() {
     if (currentTheme == "vs-dove") {
         monaco.editor.setTheme("vs-dark-dove");
         currentTheme = "vs-dark-dove";
@@ -141,4 +136,24 @@ function changeThemePressed() {
         document.getElementById("dove-brand")!.style.color = "black";
         document.getElementById("changeTheme")!.innerText = "Dark Theme";
     }   
+}
+
+function submitFileBtnPressed() {
+    const inputFile = document.getElementById("input-file")! as HTMLInputElement;
+    const files = inputFile.files;
+    const reader = new FileReader();
+
+    if (files == null || files?.length == 0) { return; }
+
+    reader.onload = (event) => {
+        const res = event.target?.result as string;
+
+        // Update editor.
+        editorObj.setValue(res);
+
+        // Update output.
+        const out = wasm.run(res).join("\n");
+        outputObj.setValue(out);
+    }
+    reader.readAsText(files[0]);
 }

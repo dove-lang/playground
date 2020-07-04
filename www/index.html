@@ -4,9 +4,21 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="./img/dove-logo-circle.png">
     <title>Dove Playground</title>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
 
     <style>
       body {
@@ -35,7 +47,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" id="nav" style="background-color:#f2f2f2">
       <a class="navbar-brand mb-0 h1" id="dove-brand">Dove Playground &#x1F54A</a>
       <a href="#" class="nav-link text-secondary mr-auto" id="run-btn">Run &#x1F3C3</a>
-      <a href="#" class="nav-link text-secondary" id="upload-btn" data-toggle="modal" data-target="#input">Upload &#x1F4E4</a>
+      <a href="#" class="nav-link text-secondary" id="upload-btn" data-toggle="modal" data-target="#input-modal">Upload &#x1F4E4</a>
       <a href="#" class="nav-link text-secondary" id="download-btn">Download &#x1F4E5</a>
 
       <div class="drop_down">
@@ -43,7 +55,7 @@
           Config &#x2699
         </a>
         <div class="dropdown-menu dropdown-menu-right" id="dropdown" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" id="changeTheme" href="#">Dark Theme</a>
+          <a class="dropdown-item" id="change-theme-btn" href="#">Dark Theme</a>
           <a class="dropdown-item" href="#">Action 2</a>
           <a class="dropdown-item" href="#">Action 3</a>
         </div>
@@ -54,7 +66,7 @@
     <!-- Body -->
     <div class = "row">
       <!-- Input dialog modal -->
-      <div class="modal fade" tabindex="-1" role="dialog" id="input">
+      <div class="modal fade" tabindex="-1" role="dialog" id="input-modal">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -65,9 +77,15 @@
             </div>
             <div class="modal-body">
               <p>Choose a file to upload.</p>
+              <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="input-file">
+                  <label for="input-file" class="custom-file-label" id="input-file-lbl">Choose file</label>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="submit-modal-btn">Submit</button>
+              <button type="button" class="btn btn-primary" id="submit-modal-btn" data-dismiss="modal">Submit</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>
@@ -83,17 +101,14 @@
       </div>
     </div>
 
-
-    <!-- Bootstrap js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-            crossorigin="anonymous"></script>
+    <script>
+        // This script is for making BS4 file input show the name of the selected file.
+        // https://stackoverflow.com/a/51497456
+        $('input[type="file"]').change(function(e){
+            const fileName = e.target.files[0].name;
+            $('#input-file-lbl').html(fileName);
+        });
+    </script>
 
     <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
     <script src="./bootstrap.js"></script>
