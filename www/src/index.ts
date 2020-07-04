@@ -66,7 +66,7 @@ function setupLanguage() {
     monaco.languages.register({ id: "dove" });
     monaco.languages.setMonarchTokensProvider("dove", doveMonarchLanguage);
     monaco.languages.setLanguageConfiguration("dove", doveAdvancedLanguageConfig);
-    
+
     // Setup Dove output language.
     monaco.languages.register({ id: "dove-out" });
     monaco.languages.setMonarchTokensProvider("dove-out", doveOutputMonarchLanguage);
@@ -88,10 +88,21 @@ function setupThemes() {
 }
 
 function runBtnPressed() {
-    const inputValue = editorObj.getValue();
-    const resValue = wasm.run(inputValue).join("\n");
+    outputObj.setValue("Executing code...")
 
-    outputObj.setValue(resValue);
+    const inputValue = editorObj.getValue();
+
+    // Using workers with wasm
+    // https://github.com/webpack/webpack/issues/7647#issuecomment-423788776
+    // Unfortunately using Typescript workers require worker-loader, which does not support (?) wasm
+    const worker = new Worker("./worker.js");
+    worker.postMessage({
+        source: inputValue,
+        // wasm,
+    });
+    worker.onmessage = e => {
+        outputObj.setValue(e.data);
+    };
 }
 
 function downloadBtnPressed() {
@@ -135,7 +146,7 @@ function changeThemeBtnPressed() {
         document.body.style.backgroundColor = "white";
         document.getElementById("dove-brand")!.style.color = "black";
         document.getElementById("changeTheme")!.innerText = "Dark Theme";
-    }   
+    }
 }
 
 function submitFileBtnPressed() {

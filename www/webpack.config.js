@@ -2,11 +2,12 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 const path = require('path');
 
-module.exports = {
+const browserConfig = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bootstrap.js",
+    globalObject: 'this'
   },
   mode: "development",
   plugins: [
@@ -18,6 +19,10 @@ module.exports = {
   },
   module: {
     rules:[
+      // {
+      //   test: /\.worker\.ts$/,
+      //   loader: 'worker-loader',
+      // },
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
@@ -43,3 +48,16 @@ module.exports = {
    ],
   },
 };
+
+// Config for web workers
+const workerConfig = {
+  entry: "./src/worker.js",
+  target: "webworker",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "worker.js"
+  },
+  mode: "development",
+};
+
+module.exports = [browserConfig, workerConfig];
