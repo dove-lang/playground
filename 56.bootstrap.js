@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[56],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[56],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/sql/sql.js":
 /*!**********************************************************************!*\

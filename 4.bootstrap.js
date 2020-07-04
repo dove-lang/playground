@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[4],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[4],{
 
 /***/ "../pkg/dove_wasm.js":
 /*!***************************!*\

@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[47],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[47],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/restructuredtext/restructuredtext.js":
 /*!************************************************************************************************!*\

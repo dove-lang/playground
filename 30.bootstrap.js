@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[30],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[30],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/msdax/msdax.js":
 /*!**************************************************************************!*\

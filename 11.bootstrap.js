@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[11],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[11],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/cameligo/cameligo.js":
 /*!********************************************************************************!*\

@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[46],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[46],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/redshift/redshift.js":
 /*!********************************************************************************!*\

@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[9],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[9],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/azcli/azcli.js":
 /*!**************************************************************************!*\

@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[10],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[10],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/bat/bat.js":
 /*!**********************************************************************!*\

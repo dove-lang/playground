@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[59],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[59],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/tcl/tcl.js":
 /*!**********************************************************************!*\

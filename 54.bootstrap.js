@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[54],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[54],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/solidity/solidity.js":
 /*!********************************************************************************!*\

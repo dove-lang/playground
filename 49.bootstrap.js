@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[49],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[49],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/rust/rust.js":
 /*!************************************************************************!*\

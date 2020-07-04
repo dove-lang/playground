@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[12],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[12],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/clojure/clojure.js":
 /*!******************************************************************************!*\

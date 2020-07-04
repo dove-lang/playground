@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[27],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[27],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/lua/lua.js":
 /*!**********************************************************************!*\

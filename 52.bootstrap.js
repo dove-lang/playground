@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[52],{
+(this["webpackJsonp"] = this["webpackJsonp"] || []).push([[52],{
 
 /***/ "./node_modules/monaco-editor/esm/vs/basic-languages/scss/scss.js":
 /*!************************************************************************!*\
