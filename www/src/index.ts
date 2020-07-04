@@ -55,9 +55,9 @@ load().then(() => {
 
     // Add event listeners for navbar items.
     document.getElementById("run-btn")?.addEventListener("click", runBtnPressed);
-    document.getElementById("download-btn")?.addEventListener("click", downloadBtnPressed);
     document.getElementById("change-theme-btn")?.addEventListener("click", changeThemeBtnPressed);
     document.getElementById("submit-modal-btn")?.addEventListener("click", submitFileBtnPressed);
+    document.getElementById("download-modal-btn")?.addEventListener("click", downloadBtnPressed);
 });
 
 // Helpers.
@@ -96,7 +96,10 @@ function runBtnPressed() {
 
 function downloadBtnPressed() {
     const value = editorObj.getValue();
-    download(General.DEFAULT_DL_FILENAME, value);
+
+    const filenameElem = document.getElementById("download-name-input")! as HTMLInputElement;
+    const filename = filenameElem.value == "" ? General.DEFAULT_DL_FILENAME : filenameElem.value;
+    download(filename, value);
 }
 
 /**
