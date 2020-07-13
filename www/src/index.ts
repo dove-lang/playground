@@ -109,7 +109,7 @@ function downloadBtnPressed() {
     const value = editorObj.getValue();
 
     const filenameElem = document.getElementById("download-name-input")! as HTMLInputElement;
-    const filename = filenameElem.value == "" ? General.DEFAULT_DL_FILENAME : filenameElem.value;
+    const filename = filenameElem.value == "" ? General.DEFAULT_DL_FILENAME : filenameElem.value + ".dove";
     download(filename, value);
 }
 
