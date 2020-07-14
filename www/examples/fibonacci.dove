@@ -1,0 +1,17 @@
+// Dove 0.1.2 (default)
+// Visit https://github.com/dove-lang for more information.
+
+fun fib(n) {
+    if n == 0 or n == 1 {
+        return 1
+    } else {
+        return fib(n-1) + fib(n-2)
+    }
+}
+
+// Print the first `n` fibonacci numbers.
+let n = 10
+
+for i in 0..n {
+    print(fib(i))
+}

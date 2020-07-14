@@ -60,6 +60,7 @@ a, a:hover, a:focus {
     padding: 10px;
     font-size: 1.1em;
     display: block;
+    text-decoration: none;
 }
 
 #sidebar ul li a:hover {
