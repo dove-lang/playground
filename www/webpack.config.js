@@ -11,11 +11,11 @@ const browserConfig = {
   },
   mode: "development",
   plugins: [
-    new CopyWebpackPlugin(['index.html']),
+    new CopyWebpackPlugin(['index.html', 'styles.css']),
     new MonacoWebpackPlugin()
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.wasm', '...'],
+    extensions: ['.tsx', '.ts', '.js', '.wasm', '...', '.css'],
   },
   module: {
     rules:[

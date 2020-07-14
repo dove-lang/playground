@@ -58,7 +58,16 @@ load().then(() => {
     document.getElementById("change-theme-btn")?.addEventListener("click", changeThemeBtnPressed);
     document.getElementById("submit-modal-btn")?.addEventListener("click", submitFileBtnPressed);
     document.getElementById("download-modal-btn")?.addEventListener("click", downloadBtnPressed);
+
+    // Add event listeners for examples side-bar items.
+    document.getElementById("fib_ex")?.addEventListener("click", () => {
+        loadExampleByName("./examples/fibonacci.dove");
+    });
+    document.getElementById("quicksort_ex")?.addEventListener("click", () => {
+        loadExampleByName("./examples/quick_sort.dove")
+    });
 });
+
 
 // Helpers.
 function setupLanguage() {
@@ -109,7 +118,7 @@ function downloadBtnPressed() {
     const value = editorObj.getValue();
 
     const filenameElem = document.getElementById("download-name-input")! as HTMLInputElement;
-    const filename = filenameElem.value == "" ? General.DEFAULT_DL_FILENAME : filenameElem.value;
+    const filename = filenameElem.value == "" ? General.DEFAULT_DL_FILENAME : filenameElem.value + ".dove";
     download(filename, value);
 }
 
@@ -134,6 +143,56 @@ function download(filename: string, text: string) {
     }
 }
 
+function submitFileBtnPressed() {
+    const inputFile = document.getElementById("input-file")! as HTMLInputElement;
+    const files = inputFile.files;
+
+    if (files == null || files?.length == 0) { return; }
+
+    handleInputFile(files);
+}
+
+/**
+ * Load the input file into editor object, and update the output object as well.
+ *
+ * @param files - a FileList contain one and only one element: input file
+ */
+function handleInputFile(files: FileList) {
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+        const res = event.target?.result as string;
+
+        // Update editor and output.
+        const out = wasm.run(res).join("\n");
+        editorObj.setValue(res);
+        outputObj.setValue(out);
+    }
+    reader.readAsText(files[0]);
+}
+
+function loadExampleByName(filename: string) {
+    const rawFile = new XMLHttpRequest();
+    rawFile.open("GET", filename, false);
+    rawFile.onreadystatechange = () => {
+        if (rawFile.readyState === 4) {
+            if (rawFile.status === 200 || rawFile.status == 0) {
+                // Success
+                const allText = rawFile.responseText;
+
+                // Update editor and output.
+                const out = wasm.run(allText).join("\n");
+                editorObj.setValue(allText);
+                outputObj.setValue(out);
+            }
+        }
+    }
+    rawFile.send(null);
+
+    // Simulate clicking "Examples" nav item to hide the side-bar.
+    document.getElementById("ex-sidebar-collapse")!.click();
+}
+
 function changeThemeBtnPressed() {
     if (currentTheme == "vs-dove") {
         monaco.editor.setTheme("vs-dark-dove");
@@ -150,24 +209,4 @@ function changeThemeBtnPressed() {
         document.getElementById("dove-brand")!.style.color = "black";
         document.getElementById("changeTheme")!.innerText = "Dark Theme";
     }
-}
-
-function submitFileBtnPressed() {
-    const inputFile = document.getElementById("input-file")! as HTMLInputElement;
-    const files = inputFile.files;
-    const reader = new FileReader();
-
-    if (files == null || files?.length == 0) { return; }
-
-    reader.onload = (event) => {
-        const res = event.target?.result as string;
-
-        // Update editor.
-        editorObj.setValue(res);
-
-        // Update output.
-        const out = wasm.run(res).join("\n");
-        outputObj.setValue(out);
-    }
-    reader.readAsText(files[0]);
 }

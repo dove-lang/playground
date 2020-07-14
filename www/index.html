@@ -5,6 +5,8 @@
     <link rel="icon" type="image/png" href="./img/dove-logo-circle.png">
     <title>Dove Playground</title>
 
+    <link rel="stylesheet" href="styles.css">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -19,33 +21,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
-
-    <style>
-      body {
-        overflow: hidden;
-      }
-
-      #main-editor {
-        display: block;
-        width: 55vw;
-        height: 88vh;
-        margin-top: 10px;
-      }
-
-      #run-output {
-        display: block;
-        width: auto;
-        height: 88vh;
-        margin-top: 10px;
-        margin-left: 80px;
-      }
-    </style>
   </head>
 
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="nav" style="background-color:#f2f2f2">
       <a class="navbar-brand mb-0 h1" id="dove-brand">Dove Playground &#x1F54A</a>
+      <a href="#" class="nav-link text-secondary" id="ex-sidebar-collapse">Examples &#x1F4A1</a>
       <a href="#" class="nav-link text-secondary mr-auto" id="run-btn">Run &#x1F3C3</a>
       <a href="#" class="nav-link text-secondary" id="upload-btn" data-toggle="modal" data-target="#input-modal">Upload &#x1F4E4</a>
       <a href="#" class="nav-link text-secondary" id="download-btn" data-toggle="modal" data-target="#download-modal">Download &#x1F4E5</a>
@@ -64,7 +46,7 @@
     </nav>
 
     <!-- Body -->
-    <div class = "row">
+    <div class = "row wrapper">
       <!-- Input dialog modal -->
       <div class="modal fade" tabindex="-1" role="dialog" id="input-modal">
         <div class="modal-dialog" role="document">
@@ -118,10 +100,28 @@
         </div>
       </div>
 
+      <!-- Examples side bar -->
+      <nav id="sidebar" class="active">
+        <div class="sidebar-header">
+          <h5>Examples</h5>
+        </div>
+
+        <ul class="list-unstyled components">
+          <li>
+            <a href="#" id="fib_ex">Fibonacci Numbers</a>
+          </li>
+          <li>
+            <a href="#" id="quicksort_ex">Quick Sort</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Editor -->
       <div class="col">
         <div id="main-editor"></div>
       </div>
 
+      <!-- Output -->
       <div class="col">
         <div id= "run-output"></div>
       </div>
@@ -133,6 +133,12 @@
         $('input[type="file"]').change(function(e){
             const fileName = e.target.files[0].name;
             $('#input-file-lbl').html(fileName);
+        });
+
+        $(document).ready(function () {
+            $('#ex-sidebar-collapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
         });
     </script>
 
