@@ -13,7 +13,8 @@ This playground allows you to run Dove code without installing the main Dove pro
 
 1. Native Dove syntax highlighting support.
 2. User friendly editor which is based on `monaco-editor`, the editor that powers [VS Code](https://github.com/Microsoft/vscode).
-3. The interpreter is compiled to `.wasm`, which enables:
+3. Built-in examples of famous algorithms to give you a brief idea of what Dove is capable of.
+4. The interpreter is compiled to `.wasm`, which enables:
     1. Fast speed,
     2. Offline interpreting.
     
