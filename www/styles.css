@@ -2,11 +2,12 @@
 
 body {
     overflow: hidden;
+    background-color: black;
 }
 
 #main-editor {
     display: block;
-    width: 55vw;
+    width: 54.5vw;
     height: 88vh;
     margin-top: 10px;
 }
