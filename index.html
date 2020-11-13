@@ -113,6 +113,9 @@
           <li>
             <a href="#" id="quicksort_ex">Quick Sort</a>
           </li>
+          <li>
+            <a href="#" id="inheritance_ex">Inheritance</a>
+          </li>
         </ul>
       </nav>
 
@@ -130,13 +133,13 @@
     <script>
         // This script is for making BS4 file input show the name of the selected file.
         // https://stackoverflow.com/a/51497456
-        $('input[type="file"]').change(function(e){
+        $('input[type="file"]').change(function(e) {
             const fileName = e.target.files[0].name;
             $('#input-file-lbl').html(fileName);
         });
 
         $(document).ready(function () {
-            $('#ex-sidebar-collapse').on('click', function () {
+            $('#ex-sidebar-collapse').on('click', function() {
                 $('#sidebar').toggleClass('active');
             });
         });
