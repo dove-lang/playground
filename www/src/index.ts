@@ -66,6 +66,9 @@ load().then(() => {
     document.getElementById("quicksort_ex")?.addEventListener("click", () => {
         loadExampleByName("./examples/quick_sort.dove")
     });
+    document.getElementById("inheritance_ex")?.addEventListener("click", () => {
+        loadExampleByName("./examples/inheritance.dove")
+    });
 });
 
 

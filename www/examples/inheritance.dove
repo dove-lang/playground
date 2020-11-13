@@ -1,0 +1,33 @@
+// Dove 0.1.2 (default)
+// Visit https://github.com/dove-lang for more information.
+
+/**
+    The Animal class.
+*/
+class Animal {
+    fun init(age, name) {
+        self.age = age
+        self.name = name
+    }
+
+    fun greet() {
+        print("Hi, I am " + self.name)
+    }
+
+    fun getAge() {
+        return self.age
+    }
+}
+
+/**
+    The Human class, a subclass of the Animal class.
+*/
+class Human from Animal {
+    fun init(age, name) {
+        super.init(age, name)
+    }
+}
+
+let h1 = Human(19, "Doveacean")
+h1.greet()
+print("Age: " + h1.getAge())
